@@ -4,13 +4,13 @@ interface List {
   list: ListItem[];
   load(): void;
   save(): void;
-  clear(): void;
+  clearList(): void;
   addItem(itemObj: ListItem): void;
   removeItem(id: string): void;
 }
 
 export default class FullList implements List {
-  // Private static property to hold the single instance - we know there's only going to be one list, so we can 
+  // Private static property to hold the single instance - we know there's only going to be one list
   static instance: FullList = new FullList();
 
   // Private constructor to prevent external instantiation - the combo of this and the above creates a singleton pattern. 
@@ -39,7 +39,7 @@ export default class FullList implements List {
     localStorage.setItem('myList', JSON.stringify(this._list));
   }
 
-  clear(): void {
+  clearList(): void {
     this._list = [];
     this.save();
   }
